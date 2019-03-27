@@ -1,9 +1,16 @@
 <template>
   <div>
-    <v-progress-linear :indeterminate="loading" v-show="loading" class="v-progress-bar" style="z-index: 1000"></v-progress-linear>
-    <v-toolbar fixed>
-      <v-btn @click="goBack">戻る</v-btn>
-      <v-btn @click="goForward">進む</v-btn>
+    <v-progress-linear :indeterminate="loading" class="v-progress-bar"></v-progress-linear>
+    <v-toolbar fixed class="v-toolbar">
+      <v-btn @click="goBack" icon>
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
+      <v-btn @click="goForward" icon>
+        <v-icon>arrow_forward</v-icon>
+      </v-btn>
+      <v-btn @click="reload" icon>
+        <v-icon>loop</v-icon>
+      </v-btn>
     </v-toolbar>
     <webview id="webview" src="https://app.misoca.jp/invoices"
              style="display:inline-flex; width:1000px; height:563px" ref="webview"></webview>
@@ -24,6 +31,9 @@ export default {
     },
     goForward () {
       this.$refs.webview.canGoForward() && this.$refs.webview.goForward()
+    },
+    reload () {
+      this.$refs.webview.reload()
     }
   },
   mounted () {
@@ -33,12 +43,19 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
   .v-progress-bar {
     position: fixed;
     margin: 0;
+    z-index: 100;
   }
   #webview {
-    margin-top: 65px;
+    margin-top: 57px;
+  }
+  .v-toolbar {
+    margin-top: 7px;
+    .v-toolbar__content {
+      height: 50px;
+    }
   }
 </style>
