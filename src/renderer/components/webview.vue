@@ -30,7 +30,7 @@
 </template>
 
 <script>
-export default { name: 'index',
+export default { name: 'webview',
   data () {
     return {
       loading: false,
@@ -39,7 +39,7 @@ export default { name: 'index',
     }
   },
   props: {
-    initUrl: {type: String, require: true, default: 'https://qiita.com'}
+    initUrl: {type: String, require: true, default: 'https://qita.com'}
   },
   methods: {
     goBack () {
@@ -80,9 +80,7 @@ export default { name: 'index',
     })
 
     // commit eventの付与
-    this.webview.addEventListener('load-commit', (e) => {
-      this.setUrlBar(e)
-    })
+    this.webview.addEventListener('load-commit', this.setUrlBar)
   }
 }
 </script>
