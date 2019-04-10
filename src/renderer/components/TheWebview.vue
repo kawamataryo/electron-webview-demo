@@ -30,7 +30,8 @@
 </template>
 
 <script>
-export default { name: 'webview',
+export default {
+  name: 'TheWebview',
   data () {
     return {
       loading: false,
@@ -39,7 +40,7 @@ export default { name: 'webview',
     }
   },
   props: {
-    initUrl: {type: String, require: true, default: 'https://qita.com'}
+    initUrl: {type: String, require: true, default: 'https://app.misoca.jp/sessions/new'}
   },
   methods: {
     goBack () {
@@ -80,7 +81,9 @@ export default { name: 'webview',
     })
 
     // commit eventの付与
-    this.webview.addEventListener('load-commit', this.setUrlBar)
+    this.webview.addEventListener('load-commit', (e) => {
+      this.setUrlBar(e)
+    })
   }
 }
 </script>
@@ -95,8 +98,8 @@ export default { name: 'webview',
   #webview {
     margin-top: 57px;
     display: inline-flex;
-    width: 1000px;
-    height: 563px
+    width: 1220px;
+    height: 900px;
   }
 
   .webview-toolbar {
