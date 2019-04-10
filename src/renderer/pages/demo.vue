@@ -1,5 +1,5 @@
 <template>
-  <webview id="webview" src="https://qiita.com"></webview>
+  <webview id="webview" src="https://app.misoca.jp/sessions/new"></webview>
 </template>
 
 <script>

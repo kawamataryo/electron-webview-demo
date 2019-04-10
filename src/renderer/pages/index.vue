@@ -39,7 +39,7 @@ export default { name: 'index',
     }
   },
   props: {
-    initUrl: {type: String, require: true, default: 'https://qiita.com'}
+    initUrl: {type: String, require: true, default: 'https://app.misoca.jp/sessions/new'}
   },
   methods: {
     goBack () {
